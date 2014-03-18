@@ -1,0 +1,335 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+    title Appium
+
+    // build:css styles/styles.css
+    //- Check out 'src/bower_components/prism/themes/' for available themes
+    link(rel='stylesheet', type='text/css', href='bower_components/prism/themes/prism-tomorrow.css')
+    link(rel='stylesheet', type='text/css', href='styles/main.css')
+    link(rel='stylesheet', type='text/css', href='styles/bg.css')
+    link(rel='stylesheet', type='text/css', href='styles/font-awesome/css/font-awesome.min.css')
+    // endbuild
+
+  body
+
+    article
+
+      section(data-bespoke-hash='intro')
+        h1 Appium
+        h3 Automation for Apps
+        div ...in my case, hybrid Cordova apps
+        hr
+        hr
+        img(src='img/introducing-appium.gif', width="500px")
+
+      section(data-bespoke-hash='who-am-i')
+        hr
+        h1 Who am I ?
+        h2 Tommy-Carlos Williams 
+        hr
+        h3
+          i(class='fa fa-envelope')&nbsp;&nbsp;  
+          a(href='mailto:tommy@devgeeks.org') tommy@devgeeks.org
+        h3
+          i(class='fa fa-twitter')&nbsp;&nbsp;  
+          a(href='http://twitter.com/theRealDevgeeks') @theRealDevgeeks
+        hr
+        h3
+          i(class='fa fa-link')&nbsp;&nbsp;  
+          a(href='http://blog.devgeeks.org') http://blog.devgeeks.org
+        h3
+          i(class='fa fa-github')&nbsp;&nbsp;  
+          a(href='http://github.com/devgeeks') http://github.com/devgeeks
+      
+      section(data-bespoke-hash='what-is-appium')
+        h1 What is Appium?
+        blockquote 
+          i(class="fa fa-quote-left")
+          div Appium is an open source test automation<br>framework for use with native and <a href="https://github.com/appium/appium/wiki/Testing-Hybrid-Apps">hybrid</a> mobile apps.<br>It drives iOS and Android apps using the <br><a href="https://code.google.com/p/selenium/wiki/JsonWireProtocol">WebDriver JSON wire protocol</a>.
+          i(class="fa fa-quote-right")
+        hr
+      section(data-bespoke-hash='why-automated-testing')
+        h2 Why Automated Testing?
+        div or: "I do unit testing already, why do I need this?"
+        hr
+        hr
+        div.bullet  Integration and Functional tests verify that the components<br>of your application work together
+        hr
+        blockquote.bullet
+          i(class="fa fa-quote-left")
+          div Unit Test - testing an individual unit, such as a method (function)<br>in a class, with all dependencies mocked up.
+          <br><br>
+          div Functional Test - AKA Integration Test, testing a slice of<br>functionality in a system. This will test many methods and<br>may interact with dependencies like Databases<br>or Web Services.
+          i(class="fa fa-quote-right")
+      section(data-bespoke-hash='ok-but-why-appium')
+        h2 OK, But Why Appium?
+        hr
+        hr
+        ul.bullet
+          li <i class="fa fa-star"></i> Open Source
+          li <i class="fa fa-star"></i> Cross platform
+          li <i class="fa fa-star"></i> No SDKs or recompilation of your app
+          li <i class="fa fa-star"></i> Tests written in the language of your choice
+          li <i class="fa fa-star"></i> Installable from npm
+          li <i class="fa fa-star"></i> Can be used with SauceLabs cloud testing
+      section(data-bespoke-hash='what-can-we-automate')
+        h2 What can we automate?
+        hr
+        hr
+        ul.bullet
+          li <i class="fa fa-star"></i> Clicks/Taps
+          li <i class="fa fa-star"></i> Form input
+          li <i class="fa fa-star"></i> Gestures
+          li <i class="fa fa-star"></i> Alert acceptance/dismissal
+          li <i class="fa fa-star"></i> etc...
+      section(data-bespoke-hash='selenium-json-wire-protocol')
+        h2 Selenium JSON Wire Protocol
+        div 
+          i A description of the protocol used by WebDriver to communicate with remote instances 
+        hr
+        hr
+        hr
+        hr
+        hr
+        h3 A REST API to communicate with your app
+        hr
+        h3 Testing libraries in various languages to communicate to the API
+      section(data-bespoke-hash='test-using-js')
+        h1 Test Using JS
+        h3 <a href="https://github.com/admc/wd">WD.js – Webdriver/Selenium 2 client</a>
+        div Node-based selenium client - use either async or promises
+        hr
+        code.language-javascript
+          pre.
+            /**/
+            browser.init({browserName:'chrome'}, function() {
+              browser.get("http://admc.io/wd/test-pages/guinea-pig.html", function() {
+                browser.title(function(err, title) {
+                  title.should.include('WD');
+                  browser.elementById('i am a link', function(err, el) {
+                    browser.clickElement(el, function() {
+                      /* jshint evil: true */
+                      browser.eval("window.location.href", function(err, href) {
+                        href.should.include('guinea-pig2');
+                        browser.quit();
+                      });
+                    });
+                  });
+                });
+              });
+            });
+      section(data-bespoke-hash='getting-started')
+        h2 Getting Started / Boilerplate
+        div Must set up the driver / browser object with info on the app
+        hr
+        code.language-javascript
+          pre.
+            /**/
+            path = require('path');
+            var projectRoot = path.resolve(__dirname, '..');
+            //- var chai = require("chai");
+            //- var chaiAsPromised = require("chai-as-promised");
+            //- chai.use(chaiAsPromised);
+            //- chai.should();
+            var wd = require('wd')
+            describe('Encryptr', function() {
+              this.timeout(50000);
+              var browser, appURL = projectRoot + "/platforms/android/bin/Encryptr-debug.apk";
+              var waitTimeout = 10000;
+              before(function() {
+                browser = wd.promiseChainRemote("localhost", 4723);
+                return browser
+                  .init({
+                    device: 'Selendroid', // or 'iPhone Simulator'
+                    'app-package': 'org.devgeeks.encryptr',
+                    'app-activity': '.MyApp', // only for Android
+                    name: 'MyApp', app: '/path/to/MyApp-debug.apk', version: '',
+                    browserName: '', implicitWaitMs: 500
+                  });
+              });
+            });
+      section(data-bespoke-hash='hybrid-specific-info')
+        h2 Hybrid Specific Info
+        div Before interacting with the web view, we need to switch context
+        hr
+        code.language-javascript(style="font-size:70%")
+          pre.
+            /**/
+            // Android
+            browser.window("WEBVIEW");
+            // iOS
+            browser.windowHandles()
+              .then(function(handles) {
+                return browser.window(handles[0]);
+              });
+      section(data-bespoke-hash='our-first-test')
+        h1 Our First Test
+        div Super simple. Start the app, wait for the existence of an<br>element, then check the text is correct
+        hr
+        code.language-javascript
+          pre.
+            /**/
+            describe("Registration", function() {
+              it("should have a registration link", function() {
+                return browser
+                  .waitForElementByCss(".signupButton", waitTimeout)
+                  .then(function() {
+                    return browser.elementByCss(".signupButton");
+                  }).should.eventually.be.ok;
+              });
+              it("should have the text: 'Register for an account »'", function() {
+                return browser.elementByCss(".signupButton")
+                  .then(function(el) {
+                    return el.text();
+                  }).should.eventually.equal("Register for an account »");
+              });
+            });
+      section(data-bespoke-hash='demo1')
+        h1 Demo
+        hr
+        hr
+        hr
+        hr
+        hr
+        hr
+        hr
+        hr
+        hr
+        hr
+        hr
+        hr
+        hr
+        hr
+        hr
+      section(data-bespoke-hash='something-a-bit-more-useful')
+        h2 Something a Bit More Useful
+        div Finding an element is all well and good, but clicking and<br>entering text is a lot more useful.
+        hr
+        code.language-javascript(style='font-size:40%')
+          pre.
+            /**/
+            it("should be able to enter a new username", function() {
+              return browser.waitForElementByCss("input[name=newusername]", 10000)
+                .then(function(el) {
+                  el.sendKeys("testusername");
+                  return el.value;
+                }).should.eventually.equal("testusername");
+            });
+            it("should be able to enter a new passphrase", function() {
+              return browser.waitForElementByCss("input[name=passphrase]")
+                .then(function(el) {
+                  el.sendKeys("testpassphrase");
+                  return el.value;
+                }).should.eventually.equal("testpassphrase");
+            });
+            it("should be able to register", function() {
+              return browser
+                .waitForElementByCss(".button.signupButton", 10000)
+                .then(function() {
+                  return browser.elementByCss(".button.signupButton");
+                })
+                .then(function(el) {
+                  return el.click();
+                })
+                .then(function() {
+                  return browser
+                    .waitForElementByCss(".login.dismissed", 10000);
+                }).should.eventually.be.ok;
+            });
+      section(data-bespoke-hash='demo2')
+        h1 Demo
+        hr
+        hr
+        hr
+        hr
+        hr
+        hr
+        hr
+        hr
+        hr
+        hr
+        hr
+        hr
+        hr
+        hr
+        hr
+      section(data-bespoke-hash='some-helpful-libraries')
+        h2 Some Helpful Libraries
+        div ...to make it all just that little bit nicer
+        hr
+        ul.bullet
+          li <i class='fa fa-github'></i>&nbsp;&nbsp;<a href="https://github.com/wookiehangover/wd-query">https://github.com/wookiehangover/wd-query</a><br>jQuery style selectors for wd promises
+          li <i class='fa fa-link'></i>&nbsp;&nbsp;<a href="http://chaijs.com/plugins/chai-as-promised">http://chaijs.com/plugins/chai-as-promised</a><br>Chai as Promised extends Chai with a fluent language<br>for asserting facts about promises
+      section(data-bespoke-hash='adding-to-your-workflow')
+        h2 Adding to Your Workflow
+        hr
+        ul.bullet
+          li <i class='fa fa-github'></i>&nbsp;&nbsp;<a href="https://github.com/pghalliday/grunt-mocha-test">https://github.com/pghalliday/grunt-mocha-test</a><br>A grunt task for running server side mocha tests
+        code.language-javascript.bullet
+          pre.
+            /**/
+            mochaTest: {
+              test: {
+                options: {
+                  reporter: 'spec'
+                },
+                timeout: 10e3,
+                src: ['functional-tests/functionalTests.js']
+              }
+            }
+        hr
+        ul.bullet  
+          li <i class='fa fa-github'></i>&nbsp;&nbsp;<a href="https://github.com/wookiehangover/grunt-mocha-appium">https://github.com/wookiehangover/grunt-mocha-appium</a><br>Run functional tests with Mocha, wd and Appium.
+        hr
+      section(data-bespoke-hash='big-demo')
+        h1 Big Demo
+        hr
+        hr
+        hr
+        hr
+        hr
+        hr
+        hr
+        hr
+        hr
+        hr
+        hr
+        hr
+        hr
+        hr
+        hr
+      section(data-bespoke-hash='thanks')
+        h1 Thanks!
+        hr
+        h3 Feel free to ask me any Cordova / PhoneGap questions you may have, as long as they have nothing to do with jQuery Mobile.
+        hr
+        hr
+        h3 Just kidding.<sup><i class="fa fa-asterisk"></i></sup>
+        hr
+        hr
+        hr
+        hr
+        hr
+        hr
+        hr
+        hr
+        hr
+        hr
+        hr
+        p <sup><i class="fa fa-asterisk"></i></sup> I'm totally not kidding...
+
+    // build:js scripts/scripts.js
+    script(src='bower_components/bespoke.js/dist/bespoke.min.js')
+    script(src='bower_components/bespoke-keys/dist/bespoke-keys.min.js')
+    script(src='bower_components/bespoke-touch/dist/bespoke-touch.min.js')
+    script(src='bower_components/bespoke-bullets/dist/bespoke-bullets.min.js')
+    script(src='bower_components/bespoke-scale/dist/bespoke-scale.min.js')
+    script(src='bower_components/bespoke-hash/dist/bespoke-hash.min.js')
+    script(src='bower_components/bespoke-progress/dist/bespoke-progress.min.js')
+    script(src='bower_components/bespoke-state/dist/bespoke-state.min.js')
+    script(src='bower_components/prism/prism.js')
+    script(src='scripts/main.js')
+    // endbuild

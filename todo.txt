@@ -1,0 +1,9 @@
+Selenium JSON wire protocol slide
+x Something a Bit More Useful slide
+Some Helpful Libraries slide
+Adding to your Workflow slide
+x 2014-03-18 Practice demos
+Practice run through
+x 2014-03-18 Strip down demo 1 and put in a branch
+x 2014-03-18 Strip down demo 2 and put in a branch
+x 2014-03-18 Download the gifs locally
