@@ -1,0 +1,16 @@
+{
+  "name": "bespoke-progress",
+  "version": "0.1.0",
+  "dependencies": {
+    "bespoke.js": ">=0.3.0"
+  },
+  "gitHead": "67df55c8324dea44954dd6d9e91db6badcc39740",
+  "readme": "[![Build Status](https://secure.travis-ci.org/markdalgleish/bespoke-progress.png?branch=master)](https://travis-ci.org/markdalgleish/bespoke-progress)\n\n# bespoke-progress\n\nProgress Bar for [Bespoke.js](http://markdalgleish.com/projects/bespoke.js)\n\n## Download\n\nDownload the [production version][min] or the [development version][max], or use a [package manager](#package-managers).\n\n[min]: https://raw.github.com/markdalgleish/bespoke-progress/master/dist/bespoke-progress.min.js\n[max]: https://raw.github.com/markdalgleish/bespoke-progress/master/dist/bespoke-progress.js\n\n## Usage\n\nFirst, include both `bespoke.js` and `bespoke-progress.js` in your page.\n\nThen, simply include the plugin when instantiating your presentation.\n\n```js\nbespoke.horizontal.from('article', {\n  progress: true\n});\n```\n\n## Package managers\n\n### Bower\n\n```bash\n$ bower install bespoke-progress\n```\n\n### npm\n\n```bash\n$ npm install bespoke-progress\n```\n\nThe bespoke-progress npm package is designed for use with [browserify](http://browserify.org/), e.g.\n\n```js\nrequire('bespoke');\nrequire('bespoke-progress');\n```\n\n## Credits\n\nThis plugin was built with [generator-bespokeplugin](https://github.com/markdalgleish/generator-bespokeplugin).\n\n## License\n\n[MIT License](http://en.wikipedia.org/wiki/MIT_License)\n",
+  "readmeFilename": "README.md",
+  "_id": "bespoke-progress@0.1.0",
+  "description": "[![Build Status](https://secure.travis-ci.org/markdalgleish/bespoke-progress.png?branch=master)](https://travis-ci.org/markdalgleish/bespoke-progress)",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/markdalgleish/bespoke-progress.git"
+  }
+}

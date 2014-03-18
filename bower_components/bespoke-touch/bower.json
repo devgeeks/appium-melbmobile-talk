@@ -1,0 +1,16 @@
+{
+  "name": "bespoke-touch",
+  "version": "0.1.0",
+  "dependencies": {
+    "bespoke.js": ">=0.3.0"
+  },
+  "gitHead": "a35cec71dd21697551b8485c029455d9e037f894",
+  "readme": "[![Build Status](https://secure.travis-ci.org/markdalgleish/bespoke-touch.png?branch=master)](https://travis-ci.org/markdalgleish/bespoke-touch)\n\n# bespoke-touch\n\nTouch Support for [Bespoke.js](http://markdalgleish.com/projects/bespoke.js)\n\n## Download\n\nDownload the [production version][min] or the [development version][max], or use a [package manager](#package-managers).\n\n[min]: https://raw.github.com/markdalgleish/bespoke-touch/master/dist/bespoke-touch.min.js\n[max]: https://raw.github.com/markdalgleish/bespoke-touch/master/dist/bespoke-touch.js\n\n## Usage\n\nFirst, include both `bespoke.js` and `bespoke-touch.js` in your page.\n\nThen, simply include the plugin when instantiating your presentation.\n\n```js\nbespoke.from('article', {\n  touch: true\n});\n```\n\nBy default, bespoke-touch uses horizontal swipes to navigate the slides.\n\nIf your presentation is laid out vertically, you can allow navigation with vertical swipes using the `vertical` option:\n\n```js\nbespoke.from('article', {\n  touch: 'vertical'\n});\n```\n\n## Package managers\n\n### Bower\n\n```bash\n$ bower install bespoke-touch\n```\n\n### npm\n\n```bash\n$ npm install bespoke-touch\n```\n\nThe bespoke-touch npm package is designed for use with [browserify](http://browserify.org/), e.g.\n\n```js\nrequire('bespoke');\nrequire('bespoke-touch');\n```\n\n## Credits\n\nThis plugin was built with [generator-bespokeplugin](https://github.com/markdalgleish/generator-bespokeplugin).\n\n## License\n\n[MIT License](http://en.wikipedia.org/wiki/MIT_License)\n",
+  "readmeFilename": "README.md",
+  "_id": "bespoke-touch@0.1.0",
+  "description": "[![Build Status](https://secure.travis-ci.org/markdalgleish/bespoke-touch.png?branch=master)](https://travis-ci.org/markdalgleish/bespoke-touch)",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/markdalgleish/bespoke-touch.git"
+  }
+}

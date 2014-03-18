@@ -1,0 +1,16 @@
+{
+  "name": "bespoke-keys",
+  "version": "0.1.0",
+  "dependencies": {
+    "bespoke.js": ">=0.3.0"
+  },
+  "gitHead": "34e7b57860a914f8df8326b52a2903488646adbd",
+  "readme": "[![Build Status](https://secure.travis-ci.org/markdalgleish/bespoke-keys.png?branch=master)](https://travis-ci.org/markdalgleish/bespoke-keys)\n\n# bespoke-keys\n\nKeyboard Support for [Bespoke.js](http://markdalgleish.com/projects/bespoke.js)\n\n## Download\n\nDownload the [production version][min] or the [development version][max], or use a [package manager](#package-managers).\n\n[min]: https://raw.github.com/markdalgleish/bespoke-keys/master/dist/bespoke-keys.min.js\n[max]: https://raw.github.com/markdalgleish/bespoke-keys/master/dist/bespoke-keys.js\n\n## Usage\n\nFirst, include both `bespoke.js` and `bespoke-keys.js` in your page.\n\nThen, simply include the plugin when instantiating your presentation.\n\n```js\nbespoke.from('article', {\n  keys: true\n});\n```\n\nBy default, bespoke-keys uses the spacebar, left/right and page up/down keys to navigate the slides.\n\nIf your presentation is laid out vertically, you can allow navigation with up/down instead of left/right with the `vertical` option:\n\n```js\nbespoke.from('article', {\n  keys: 'vertical'\n});\n```\n\n## Package managers\n\n### Bower\n\n```bash\n$ bower install bespoke-keys\n```\n\n### npm\n\n```bash\n$ npm install bespoke-keys\n```\n\nThe bespoke-keys npm package is designed for use with [browserify](http://browserify.org/), e.g.\n\n```js\nrequire('bespoke');\nrequire('bespoke-keys');\n```\n\n## Credits\n\nThis plugin was built with [generator-bespokeplugin](https://github.com/markdalgleish/generator-bespokeplugin).\n\n## License\n\n[MIT License](http://en.wikipedia.org/wiki/MIT_License)\n",
+  "readmeFilename": "README.md",
+  "_id": "bespoke-keys@0.1.0",
+  "description": "[![Build Status](https://secure.travis-ci.org/markdalgleish/bespoke-keys.png?branch=master)](https://travis-ci.org/markdalgleish/bespoke-keys)",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/markdalgleish/bespoke-keys.git"
+  }
+}
