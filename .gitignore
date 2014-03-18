@@ -2,5 +2,3 @@ node_modules
 src/bower_components
 public
 .tmp
-src/img
-src/styles/bg.styl
